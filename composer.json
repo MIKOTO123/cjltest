@@ -1,0 +1,13 @@
+{
+    "name": "root/cjltest",
+    "authors": [
+        {
+            "name": "mikoto",
+            "email": "wuqing2012163@163.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.25",
+        "php-mime-mail-parser/php-mime-mail-parser": "^5.0"
+    }
+}

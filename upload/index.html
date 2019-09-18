@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <input type="file" id="uploadFile" />
+    <input type="button" id="btnUpload" value="确定" onclick="uploadImage()"  />
+    <div id="imgDiv">
+    </div>
+
+
+</body>
+<script src="jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+    function uploadImage() {
+        //判断是否有选择上传文件
+        var imgPath = $("#uploadFile").val();
+        if (imgPath == "") {
+            alert("请选择上传图片！");
+            return;
+        }
+        //判断上传文件的后缀名
+//        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+//        if (strExtension != 'jpg' && strExtension != 'gif'
+//                && strExtension != 'png' && strExtension != 'bmp') {
+//            alert("请选择图片文件");
+//            return;
+//        };
+        var formdata = new FormData();
+        var fileObj = $("#uploadFile").get(0).files;
+        formdata.append("file", fileObj[0]);
+        formdata.append("aid", 30);
+        formdata.append("nickname", "你好");
+        $.ajax({
+            type: "POST",
+            url: 'test.php',
+            data: formdata,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                //alert("上传成功");
+                $("#imgDiv").empty();
+                $("#imgDiv").html(data);
+                $("#imgDiv").show();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                //alert("上传失败，请检查网络后重试");
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+    }
+</script>
+
+
+
+</html>
