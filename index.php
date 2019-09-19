@@ -19,11 +19,20 @@
 
 
 
+
+
+
 require_once  __DIR__."/vendor/autoload.php";
 //require_once __DIR__."/php-mime-mail-parser/src/Parser.php";
 //require_once __DIR__."/php-mime-mail-parser/src/Contracts/CharsetManager.php";
 //require_once __DIR__."/php-mime-mail-parser/src/Charset.php";
 //require_once __DIR__."/php-mime-mail-parser/src/*";
+
+
+$cjlPrint  = new CjlPage\CjlPrint();
+$cjlPrint->printMyDream();
+
+
 
 $path = '/tmp/123.eml';
 $parser = new PhpMimeMailParser\Parser();
